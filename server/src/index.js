@@ -80,7 +80,7 @@ app.get('/api/:character', async (req, res) => {
   try {
     const response = await fetch(urlChar, options)
     const data = await response.json()
-    res.send(data.data)
+    res.send(data.data.results[0])
   } catch (err) {
     console.error()
     'error:' + err
