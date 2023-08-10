@@ -19,7 +19,7 @@ const hash = createHash(ts, privateKey, publicKey)
 
 const url = `${baseUrl}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
 
-// Validate and ensure required environmental variables are set
+// Validatation and ensuring required env variables are set
 if (!API_URL || !port || !publicKey || !privateKey) {
   console.error('One or more required environmental variables are missing.')
   process.exit(1)
@@ -30,12 +30,12 @@ app.get('/api', async (req, res) => {
   const options = {
     url: API_URL,
     method: 'GET',
-    Params: {
+    params: {
       apikey: publicKey,
       hash: hash,
       ts: ts,
     },
-    Headers: {
+    headers: {
       Accept: '*/*',
     },
   }
@@ -46,7 +46,7 @@ app.get('/api', async (req, res) => {
     const data = await response.json()
     res.send(data.data)
   } catch (err) {
-    console.err('error:' + err)
+    console.error('error:' + err)
     res.status(500).send('Internal Server Error')
   }
 
@@ -56,26 +56,41 @@ app.get('/api', async (req, res) => {
   //   .catch((err) => console.error('error:' + err))
 })
 
-app.get('/api/:character', (req, res) => {
+app.get('/api/:character', async (req, res) => {
   const options = {
     url: API_URL,
     method: 'GET',
-    Params: {
+    params: {
       apikey: publicKey,
       hash: hash,
       ts: ts,
     },
-    Headers: {
+    headers: {
       Accept: '*/*',
     },
   }
-  const urlChar = `${baseUrl}?name=${req.params.character}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+
+  //simplified urlChar
+  const characterName = req.params.character
+  const urlChar = `${url}&name=${characterName}`
+
+  // const urlChar = `${baseUrl}?name=${characterName}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
   //gateway.marvel.com:443/v1/public/characters?name=deadpool&apikey=86381f87861421750d65827f3119a252&hash=3a9a180025dab8f807fd8b4bfda49b1a&ts=1668089245618
 
-  https: fetch(urlChar, options)
-    .then((res) => res.json())
-    .then((data) => res.json(data.data.results[0]))
-    .catch((err) => console.error('error:' + err))
+  try {
+    const response = await fetch(urlChar, options)
+    const data = await response.json()
+    res.send(data.data)
+  } catch (err) {
+    console.error()
+    'error:' + err
+    res.status(500).send('Internal Server Error')
+  }
+
+  // https: fetch(urlChar, options)
+  //   .then((res) => res.json())
+  //   .then((data) => res.json(data.data.results[0]))
+  //   .catch((err) => console.error('error:' + err))
 })
 
 app.listen(port, () => {
