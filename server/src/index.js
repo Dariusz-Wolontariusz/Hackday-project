@@ -25,6 +25,11 @@ if (!API_URL || !port || !publicKey || !privateKey) {
   process.exit(1)
 }
 
+//redirect to /api
+app.get('/', (req, res) => {
+  res.redirect('/api')
+})
+
 app.get('/api', async (req, res) => {
   console.log(ts, hash)
   const options = {
