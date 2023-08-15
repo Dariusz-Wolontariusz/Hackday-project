@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "./index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "env": {
+    "BASE_URL": "@base_url",
+    "PORT": "@port",
+    "PUBLIC_KEY": "@public_key",
+    "PRIVATE_KEY": "@private_key"
+  }
+}
