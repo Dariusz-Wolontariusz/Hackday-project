@@ -27,10 +27,12 @@ if (!API_URL || !port || !publicKey || !privateKey) {
 
 //redirect to /api
 app.get('/', (req, res) => {
+  console.log('Received request to root path')
   res.redirect('/api')
 })
 
 app.get('/api', async (req, res) => {
+  console.log('Received request to /api')
   console.log(ts, hash)
   const options = {
     url: API_URL,
@@ -51,7 +53,7 @@ app.get('/api', async (req, res) => {
     const data = await response.json()
     res.send(data.data)
   } catch (err) {
-    console.error('error:' + err)
+    console.error('error:', err)
     res.status(500).send('Internal Server Error')
   }
 
@@ -87,8 +89,7 @@ app.get('/api/:character', async (req, res) => {
     const data = await response.json()
     res.send(data.data.results[0])
   } catch (err) {
-    console.error()
-    'error:' + err
+    console.error('error:', err)
     res.status(500).send('Internal Server Error')
   }
 
