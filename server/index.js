@@ -104,3 +104,5 @@ app.listen(port, () => {
   console.log(`Listening to the port ${port}`)
   // console.log('Darek loguje:', ts, hash, url)
 })
+
+export default app // export the app as a module for vercel
