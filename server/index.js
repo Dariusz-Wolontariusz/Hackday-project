@@ -64,6 +64,7 @@ app.get('/api', async (req, res) => {
 })
 
 app.get('/api/:character', async (req, res) => {
+  console.log('Received request to /api/:character')
   const options = {
     url: API_URL,
     method: 'GET',
