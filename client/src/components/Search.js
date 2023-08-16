@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 
 const Search = () => {
   const [input, setInput] = useState('')
@@ -37,7 +37,7 @@ const Search = () => {
           onChange={(e) => setInput(e.target.value)}
         ></input>
         <button className='form__btn' onClick={dataHandler}>
-          Get hero
+          Get your hero
         </button>
       </form>
       {hero && (

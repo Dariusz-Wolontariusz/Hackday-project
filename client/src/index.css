@@ -1,16 +1,19 @@
-
-
+/* Reset box-sizing and set a background image */
 * {
   box-sizing: border-box;
 }
 
+/* Mobile first approach (Default) */
 body {
-  background-image: url('../public/background.jpg');
-  background-size: 100%;
-  height: 100vh;
+  background-image: url('../public/background.webp');
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+  min-height: 100vh;
   display: flex;
   margin-top: 0rem;
   justify-content: center;
+  align-items: center;
 }
 
 .header {
@@ -35,28 +38,28 @@ body {
   width: 90vw;
   display: grid;
   grid-template-areas: 
-
-    'search search'
-    'image description'
-    'image description'
+    'search'
+    'image'
+    'description'
   ;
-  column-gap: 0.5rem;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
 }
 
 .hero__img {
   grid-area: image;
   border-radius: 10px;
-  width: 450px;
-  height: 450px;
+  width: 100%;
+  height: auto;
 }
 
 .form {
   grid-area: search;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .form__input {
-  width: 130px;
+  width: 50%;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -73,8 +76,6 @@ body {
   width: 50%;
 }
 
-
-
 .hero_container {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   grid-area: description;
@@ -84,15 +85,15 @@ body {
 .hero__name {
   text-align: center;
   font-size: 2.5rem;
-  color: rgb(214, 224, 124);
+  color: rgb(228, 253, 25);
   margin: 0rem 1rem 2rem;
 }
 
 .hero_description {
-  color: rgb(214, 224, 124);
-  margin: 2rem;
-  font-size: 2rem;
-  
+  color: rgb(228, 253, 25);
+  /* margin: 2rem; */
+  width: 100%;
+  font-size: 1.5rem;
 }
 
 
