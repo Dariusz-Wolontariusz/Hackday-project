@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import dotenv from 'dotenv'
+dotenv.config()
+
+const backendUrl = process.env.BACKEND_URL
 
 const Search = () => {
   const [input, setInput] = useState('')
@@ -12,9 +16,7 @@ const Search = () => {
     setIsLoading(true)
 
     try {
-      const response = await fetch(
-        `https://hackday-marvel-be.vercel.app/api/${input}`
-      )
+      const response = await fetch(`${backendUrl}/api/${input}`)
       if (!response.ok) {
         throw new Error('Server response failure')
       }
