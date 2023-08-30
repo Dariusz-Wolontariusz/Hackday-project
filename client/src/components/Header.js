@@ -5,7 +5,6 @@ const Header = () => {
     <>
       <header className='header'>
         <span className='logo'>MARVELOUS APP</span>
-        
       </header>
     </>
   )
