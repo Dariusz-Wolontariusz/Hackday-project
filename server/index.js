@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 dotenv.config()
 import MD5 from 'crypto-js/md5.js'
+import cors from 'cors'
 
 const API_URL = process.env.BASE_URL
 const app = express()
@@ -11,6 +12,15 @@ const port = process.env.PORT
 const publicKey = process.env.PUBLIC_KEY
 const privateKey = process.env.PRIVATE_KEY
 const ts = new Date().getTime()
+
+//cors configuration
+const corsOptions = {
+  origin: 'https://marvellous-app.vercel.app/',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}
+
+app.use(cors(corsOptions))
 
 const createHash = (ts, privateKey, publicKey) => {
   return MD5(ts + privateKey + publicKey).toString()

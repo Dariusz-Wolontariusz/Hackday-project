@@ -25,7 +25,7 @@ const Search = () => {
     setIsLoading(false)
   }
 
-  console.log(hero.description)
+  console.log('opis herosa:', hero.description)
 
   return (
     <>
