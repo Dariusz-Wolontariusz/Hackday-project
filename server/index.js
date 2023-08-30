@@ -15,7 +15,7 @@ const ts = new Date().getTime()
 
 //cors configuration
 const corsOptions = {
-  origin: 'https://marvellous-app.vercel.app/',
+  origin: 'https://marvellous-app.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }
