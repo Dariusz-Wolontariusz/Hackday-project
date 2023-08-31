@@ -55,7 +55,12 @@ body {
 
 .form {
   grid-area: search;
-  margin: 1rem;
+  margin: auto;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center; 
+  align-items: center; 
+  /* text-align: center; */
 }
 
 .form__input {
@@ -64,6 +69,8 @@ body {
   border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
+  text-align: center;
+  font-weight: bolder;
   color:#ccc;
   background-color: black;
   background-position: 10px 10px; 
@@ -80,6 +87,7 @@ body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   grid-area: description;
   padding: 0rem 1rem 1rem;
+  text-align: center;
 }
 
 .hero__name {
@@ -192,4 +200,76 @@ body {
     clip-path: var(--slice-1);
     transform: translate(0);
    }
+  }
+
+/*media query for medium screens  */
+  @media screen and (min-width: 768px) {
+
+    body{
+      align-items: flex-start;
+    }
+
+    .containter {
+      grid-template-columns: repeat(2, 1fr);
+      width: 90vw;
+      display: grid;
+      grid-template-areas: 
+        'search search'
+        'image description'
+      ;
+    }
+
+    .hero__img {
+      grid-area: image;
+      border-radius: 10px;
+      width: 100%;
+      /* max-height: 100vh; */
+      height: auto;
+    }
+
+    /* .form {
+      grid-area: search;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center; 
+      text-align:right;
+    } */
+
+    .form__input:focus {
+      width: 100%;
+    }
+
+  }
+
+  /*media query for large screens  */
+    
+  @media screen and (min-width: 1024px) {
+
+    body{
+      align-items: flex-start;
+    }
+
+    .containter {
+      grid-template-columns: repeat(2, 1fr);
+      width: 90vw;
+      display: grid;
+      grid-template-areas: 
+        'search search'
+        'image description'
+      ;
+    }
+
+    .hero__img {
+      grid-area: image;
+      border-radius: 10px;
+      width: 100%;
+      /* max-height: 100vh; */
+      height: auto;
+    }
+
+    .form__input:focus {
+      width: 100%;
+    }
   }

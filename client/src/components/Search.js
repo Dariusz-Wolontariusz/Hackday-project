@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import dotenv from 'dotenv'
-dotenv.config()
+// import dotenv from 'dotenv'
+// dotenv.config()
 
-const backendUrl = process.env.BACKEND_URL
+const backendUrl = 'https://hackday-marvel-be.vercel.app'
 
 const Search = () => {
   const [input, setInput] = useState('')
